@@ -1,10 +1,25 @@
 services:
+# application
   app:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
+      - "5000:5000"
     volumes:
-      - .:/app
-      - /app/node_modules
+      - ./src:/app/src
+
+
+  # database
+  db:
+    image: postgres
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    # volumes:
+    #  - data-base:/var/lib/postgresql/data
     environment:
-      - NODE_ENV=production
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: node_app_db
+      POSTGRES_USER: example

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greatness Store</title>
+  <link rel="shortcut icon" href="assets/images/GLOGO.png" type="image/x-icon">
+  <!-- Normalize File -->
+  <link rel="stylesheet" href="./assets/Css/normalize.css" />
+  <!-- Css File-->
+  <link rel="stylesheet" href="./assets/Css/shop.css" />
+  <link rel="stylesheet" href="./assets/Css/main.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./assets/Css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Start Header -->
+  <div class="header">
+    <div class="container">
+      <a href="./" class="logo">Greatness </a>
+
+      <!--search box-->
+      <div class="searchbox">
+
+        <input type="text" placeholder="Search Product ...">
+        <button><i class="fas fa-search"></i></button>
+
+      </div>
+
+
+      <div class="nav">
+        <!-- JS add Class: show -->
+        <ul class="nav-links" id="nav-links">
+          <!-- JS add Class: active -->
+          <li><a href="./">Home</a></li>
+          <li><a href="./shop">Shop</a></li>
+          <li><a href="./about">About</a></li>
+          <li><a href="./contact">Contact</a></li>
+          <a href="Login.html"><button class="btn">Login </button></a>
+
+          <li> <a href="/favorite">
+              <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+            </a></li>
+
+        </ul>
+
+        <div onclick="open_cart()" class="cart-icon" style="padding-top: 10px;">
+          <i class="fa-solid fa-cart-shopping cart"></i>
+          <span style="margin-top: 5px; margin-right: 5px;" class="span" id="cart-count">0</span>
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+  <!-- End Header -->
+
+  <!-- Start shop-header -->
+  <div class="shop-header">
+    <div class="content">
+      <h1># Winter Collection 2025 </h1>
+      <h3>Up to <span>70% Off</span>-All T-Shirts & Accessories</h3>
+    </div>
+  </div>
+  <!-- End shop-header -->
+
+  <!-- Start features-products -->
+  <div class="features-products">
+    <div class="container">
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f1.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f2.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f3.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f4.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f5.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f6.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f7.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/f8.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n1.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n2.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n3.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n4.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n5.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n6.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n7.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product">
+        <div class="img-container">
+          <img src="./assets/images/products/n8.jpg" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">adidas</p>
+          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End features-products -->
+
+  <!-- Start footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="contact">
+        <a href="./index.html" class="logo">Greatness</a>
+        <div class="info">
+          <h4>Contact</h4>
+          <p><span>Address:</span> Sharqia - Zagazig </p>
+          <p><span>Phone:</span> +02 01091686821</p>
+        </div>
+        <div class="follow">
+          <i class="fa-brands fa-facebook-f"></i>
+          <i class="fa-brands fa-twitter"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+      </div>
+
+      <div class="box">
+        <h4>About</h4>
+        <ul class="menu">
+          <li><a href="">About Us</a></li>
+          <li><a href="">Delivery Info</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Terms & Conditions</a></li>
+          <li><a href="">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="box">
+        <h4>My Account</h4>
+        <ul>
+          <li><a href="">Sign In</a></li>
+          <li><a href="">View cart</a></li>
+          <li><a href="">My Wishlist</a></li>
+          <li><a href="">Track My Order</a></li>
+          <li><a href="">Help</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <!-- End footer -->
+
+
+
+  <a href="#">
+    <div class="Up">
+
+      <i class="fa-solid  fa-angle-up"></i>
+
+    </div>
+  </a>
+
+
+
+  <!-- cart slider section -->
+  <div class="sidebar" id="sidebar">
+    <div onclick="close_cart()" class="sidebar-close">
+      <i class="fa-solid fa-close" style="padding-left: 5px;"></i>
+    </div>
+    <div class="cart-menu">
+      <h3>My Cart</h3>
+      <div class="cart-items">
+        <ul id="cart-list"></ul>
+      </div>
+      <div class="sidebar--footer">
+        <div class="total--amount">
+          <h5>Total</h5>
+          <div class="cart-total">$0.00</div>
+        </div>
+        <button class="Checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="/assets/Js/all.min.js"></script>
+  <script src="/assets/Js/shop.js"></script>
+  <script src="assets/Js/app.js"></script>
+  <script src="assets/Js/favorite.js"></script>
+</body>
+
+</html>

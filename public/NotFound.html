@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Greatness Store </title>
+    <link rel="shortcut icon" href="assets/images/GLOGO.png" type="image/x-icon">
+
+    <!-- Normalize File -->
+    <link rel="stylesheet" href="./assets/Css/normalize.css" />
+    <!-- Css File-->
+    <link rel="stylesheet" href="./assets/Css/main.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./assets/Css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* 404 Page Styling */
+        .notfound {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .notfound .container {
+            font-size: 100px;
+            font-weight: bold;
+            color: #ff4a4a;
+        }
+
+        .notfound p {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .notfound a {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background: #ff4a4a;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .notfound a:hover {
+            background: #d83434;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 100vh; display: flex;flex-direction: column;justify-content: flex-end;">
+
+        <!-- Start Header -->
+        <div>
+            <div class="header">
+                <div class="container">
+                    <a href="./" class="logo">Greatness </a>
+
+                    <!--search box-->
+                    <div class="searchbox">
+
+                        <input type="text" placeholder="Search Product ...">
+                        <button><i class="fas fa-search"></i></button>
+
+                    </div>
+
+
+                    <div class="nav">
+                        <!-- JS add Class: show -->
+                        <ul class="nav-links" id="nav-links">
+                            <!-- JS add Class: active -->
+                            <li><a href="./">Home</a></li>
+                            <li><a href="./shop">Shop</a></li>
+                            <li><a href="./about">About</a></li>
+                            <li><a href="./contact">Contact</a></li>
+                            <a href="Login.html"><button class="btn">Login </button></a>
+
+                            <li> <a href="./favorite">
+                                    <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                                </a></li>
+
+                        </ul>
+
+                        <div onclick="open_cart()" class="cart-icon" style="padding-top: 10px;">
+                            <i class="fa-solid fa-cart-shopping cart"></i>
+                            <span style="margin-top: 5px; margin-right: 5px;" class="span" id="cart-count">0</span>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+        <!-- End Header -->
+        <!-- Start Landing -->
+        <div class="notfound">
+            <div class="container">
+                404 : not found
+            </div>
+        </div>
+        <!-- End Landing -->
+
+
+
+        <!-- Start footer -->
+        <div>
+            <div class="footer">
+                <div class="container">
+                    <div class="contact">
+                        <a href="" class="logo">Greatness</a>
+                        <div class="info">
+                            <h4>Contact</h4>
+                            <p><span>Address:</span> Zagazig - Sharqia </p>
+                            <p><span>Phone:</span> +02 01091686821</p>
+                        </div>
+                        <div class="follow">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            <i class="fa-brands fa-twitter"></i>
+                            <i class="fa-brands fa-instagram"></i>
+                            <i class="fa-brands fa-youtube"></i>
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <h4>About</h4>
+                        <ul class="menu">
+                            <li><a href="">About Us</a></li>
+                            <li><a href="">Delivery Info</a></li>
+                            <li><a href="">Privacy Policy</a></li>
+                            <li><a href="">Terms & Conditions</a></li>
+                            <li><a href="">Contact Us</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="box">
+                        <h4>My Account</h4>
+                        <ul>
+                            <li><a href="">Sign In</a></li>
+                            <li><a href="">View cart</a></li>
+                            <li><a href="">My Wishlist</a></li>
+                            <li><a href="">Track My Order</a></li>
+                            <li><a href="">Help</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End footer -->
+    </div>
+
+
+
+
+
+    <!-- cart slider section -->
+    <div class="sidebar" id="sidebar">
+        <div onclick="close_cart()" class="sidebar-close">
+            <i class="fa-solid fa-close" style="padding-left: 5px;"></i>
+        </div>
+        <div class="cart-menu">
+            <h3>My Cart</h3>
+            <div class="cart-items">
+                <ul id="cart-list"></ul>
+            </div>
+            <div class="sidebar--footer">
+                <div class="total--amount">
+                    <h5>Total</h5>
+                    <div class="cart-total">$0.00</div>
+                </div>
+                <button class="Checkout-btn">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="#">
+        <div class="Up">
+
+            <i class="fa-solid  fa-angle-up"></i>
+
+        </div>
+    </a>
+
+
+
+    <script src="./assets/Js/all.min.js"></script>
+    <script src="./assets/Js/app.js"></script>
+</body>
+
+</html>

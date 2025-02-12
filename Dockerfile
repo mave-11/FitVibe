@@ -1,13 +1,20 @@
-FROM node:18-alpine
+# Use Node.js as the base image
+FROM node:22.11
 
+# Set the working directory
 WORKDIR /app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN npm install --only=production
+# Install dependencies
+RUN yarn
 
+# Copy the rest of the application code
 COPY . .
 
-EXPOSE 3000
+# Expose the application port
+EXPOSE 5000
 
-CMD ["node", "index.js"]
+# Start the application
+CMD ["npm", "run", "start"]

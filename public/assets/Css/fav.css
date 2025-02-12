@@ -1,0 +1,69 @@
+
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  :root {
+    --mainColor: #009688;
+    --textColor: #505050;
+    --bgSection: #e3e6f3;
+    --mainTransition: 0.5s;
+    --section-padding: 100px;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 13px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--mainColor);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #b7b7b7;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  p,
+  h1, h2, h3, h4 {
+    margin: 0;
+    padding: 0;
+  }
+  .fav-header {
+    margin-top: 60px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: url("../images/banner/b2.jpg");
+  }
+  
+  .fav-header .content {
+    text-align: center;
+    color: white;
+  }
+  .fav-header .content h1 {
+    font-size: 50px;
+  }
+.fav-header .content span {
+    color: red;
+  }
+    
