@@ -1,5 +1,7 @@
+
+
 services:
-# application
+
   app:
     build:
       context: .
@@ -11,25 +13,28 @@ services:
     depends_on:
       - db
 
-  # databasemongo:
+
   db:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-
-
-  # mongo-express
-  mongo-express:
-    image: mongo-express
+    image: postgres
     restart: always
     ports:
-      - 8081:8081
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: example
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d  
+
+  
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
     depends_on:
       - db
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
-      ME_CONFIG_BASICAUTH: false
+
+volumes:
+  db-data:

@@ -76,14 +76,14 @@
 <body>
     <div class="container">
         <h2>Sign up</h2>
-        <form action="/register" method="POST">
+        <form action="/auth/register" method="POST">
             <div class="input-group">
                 <label for="first-name">First Name</label>
-                <input type="text" id="first-name" placeholder="Enter your first name" required name="fName">
+                <input type="text" id="first-name" placeholder="Enter your first name" required name="first_name">
             </div>
             <div class="input-group">
                 <label for="last-name">Last Name</label>
-                <input type="text" id="last-name" placeholder="Enter your last name" required name="lName">
+                <input type="text" id="last-name" placeholder="Enter your last name" required name="last_name">
             </div>
             <div class="input-group">
                 <label for="phone">Mobile Number</label>
@@ -106,8 +106,8 @@
                 <label for="gender">Gender</label>
                 <select id="gender" required name="gender">
                     <option value="" disabled selected>Select your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    <option value="m">Male</option>
+                    <option value="f">Female</option>
                 </select>
             </div>
             <button type="submit" class="btn">Register</button>

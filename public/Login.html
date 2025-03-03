@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             align-items: center;
             height: 100vh;
         }
+
         .login-container {
             background-color: #fff;
             padding: 40px;
@@ -23,16 +25,19 @@
             text-align: center;
             width: 400px;
         }
+
         .login-container h2 {
             margin-bottom: 20px;
             font-size: 28px;
             font-weight: bold;
             text-align: left;
         }
+
         .input-container {
             position: relative;
             width: 100%;
         }
+
         .input-field {
             width: 100%;
             padding: 12px 45px;
@@ -42,6 +47,7 @@
             box-sizing: border-box;
             font-size: 16px;
         }
+
         .input-icon {
             position: absolute;
             left: 15px;
@@ -50,12 +56,14 @@
             width: 20px;
             height: 20px;
         }
+
         .remember-forgot {
             display: flex;
             justify-content: space-between;
             font-size: 14px;
             margin-top: 10px;
         }
+
         .login-btn {
             width: 85%;
             padding: 12px;
@@ -69,10 +77,12 @@
             cursor: pointer;
             margin-top: 20px;
         }
+
         .divider {
             margin: 30px 0 20px;
             border-top: 1px solid #ccc;
         }
+
         .social-login {
             display: flex;
             align-items: center;
@@ -86,14 +96,16 @@
             text-decoration: none;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 15px;
         }
+
         .social-login img {
             width: 20px;
             height: 20px;
             margin-right: 10px;
         }
+
         .create-account {
             font-size: 15px;
             color: black;
@@ -102,37 +114,42 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>login</h2>
-        <div class="input-container">
-            <img src="file://C:\Users\ELGohary\Downloads/user.png" class="input-icon" alt="email">
-            
-            <input type="email" class="input-field" placeholder="Enter your email">
-        </div>
-        <div class="input-container">
-            <img src="file://C:\Users\ELGohary\Downloads/lock.png" class="input-icon" alt="password">
-            
-            <input type="password" class="input-field" placeholder="Enter your password">
-        </div>
-        <div class="remember-forgot">
-            <label><input type="checkbox"> Remember me</label>
-            <a href="#" style="color: #2D81FF; text-decoration: none;">Forgot password?</a>
-        </div>
-        <button class="login-btn">Login</button>
+        <form action="/auth/login" method="POST">
+            <div class="input-container">
+                <img src="file://C:\Users\ELGohary\Downloads/user.png" class="input-icon" alt="email">
+
+                <input type="email" class="input-field" placeholder="Enter your email" name="email">
+            </div>
+            <div class="input-container">
+                <img src="file://C:\Users\ELGohary\Downloads/lock.png" class="input-icon" alt="password">
+
+                <input type="password" class="input-field" placeholder="Enter your password" name="password">
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#" style="color: #2D81FF; text-decoration: none;">Forgot password?</a>
+            </div>
+            <button class="login-btn" type="submit">Login</button>
+        </form>
         <div class="divider"></div>
         <a href="#" class="social-login">
             <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
             Sign in with Google
         </a>
         <a href="#" class="social-login">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
+                alt="Facebook logo">
             Sign in with Facebook
         </a>
         <a href="Register.html" class="create-account">
             Don't have an account? <span style="color: #04aa6d; font-weight: bold;">Sign up</span>
         </a>
     </div>
-   
+
 </body>
+
 </html>
