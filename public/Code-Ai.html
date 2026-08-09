@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تجربة التيشرت بالذكاء الاصطناعي</title>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .container {
+            position: relative;
+            display: inline-block;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        video {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .start-btn {
+            background: #27ae60;
+            color: white;
+        }
+
+        .stop-btn {
+            background: #c0392b;
+            color: white;
+        }
+
+        .back-btn {
+            background: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Try The Item Virtually</h2>
+    <div class="container">
+        <video id="video" autoplay playsinline></video>
+        <canvas id="canvas"></canvas>
+    </div>
+    <div class="btn-container">
+        <button class="start-btn" onclick="startCamera()"> Start </button>
+        <button class="stop-btn" onclick="stopCamera()"> Stop </button>
+        <button class="back-btn" onclick="goBack()"> Back</button>
+    </div>
+
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+
+        const queryString = window.location.search;
+
+        // Convert query string to an object
+        const urlParams = new URLSearchParams(queryString);
+
+        // Get the value of the 'username' parameter
+        const productImage = urlParams.get('product_image');
+
+        console.log(productImage); // Debugging line to check the image URL
+
+
+        let stream = null;
+        const tShirtImage = new Image();
+        tShirtImage.src = productImage; // Replace with the actual image URL
+        console.log(tShirtImage.src); // Debugging line to check the image URL
+
+
+
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                detectPose();
+            } catch (error) {
+                console.error("❌ فشل تشغيل الكاميرا:", error);
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                video.srcObject = null;
+            }
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        async function detectPose() {
+            const pose = new Pose({ locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file}` });
+            pose.setOptions({ modelComplexity: 1, smoothLandmarks: true, enableSegmentation: false });
+            await pose.initialize();
+
+            pose.onResults(results => {
+                if (!results.poseLandmarks) return;
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                const leftShoulder = results.poseLandmarks[11];
+                const rightShoulder = results.poseLandmarks[12];
+
+                if (leftShoulder && rightShoulder) {
+                    const width = Math.abs(rightShoulder.x - leftShoulder.x) * canvas.width * 2;
+                    const height = width * 1.1;
+                    const x = (leftShoulder.x + rightShoulder.x) / 2 * canvas.width - width / 2;
+                    const y = Math.min(leftShoulder.y, rightShoulder.y) * canvas.height - 40;
+                    if (tShirtImage.complete) {
+                        ctx.drawImage(tShirtImage, x, y, width, height);
+                    }
+                }
+            });
+
+            const camera = new Camera(video, { onFrame: async () => await pose.send({ image: video }) });
+            camera.start();
+        }
+    </script>
+</body>
+
+</html>

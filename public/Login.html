@@ -40,7 +40,7 @@
 
         .input-field {
             width: 100%;
-            padding: 12px 45px;
+            padding: 12px 4px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -76,6 +76,11 @@
             text-transform: capitalize;
             cursor: pointer;
             margin-top: 20px;
+        }
+
+        .login-btn:hover{
+            background-color: #04754c;
+
         }
 
         .divider {
@@ -120,12 +125,10 @@
         <h2>login</h2>
         <form action="/auth/login" method="POST">
             <div class="input-container">
-                <img src="file://C:\Users\ELGohary\Downloads/user.png" class="input-icon" alt="email">
-
+                <i class="fa-solid fa-user fa-lg"></i>
                 <input type="email" class="input-field" placeholder="Enter your email" name="email">
             </div>
             <div class="input-container">
-                <img src="file://C:\Users\ELGohary\Downloads/lock.png" class="input-icon" alt="password">
 
                 <input type="password" class="input-field" placeholder="Enter your password" name="password">
             </div>
@@ -145,7 +148,7 @@
                 alt="Facebook logo">
             Sign in with Facebook
         </a>
-        <a href="Register.html" class="create-account">
+        <a href="/auth/register" class="create-account">
             Don't have an account? <span style="color: #04aa6d; font-weight: bold;">Sign up</span>
         </a>
     </div>

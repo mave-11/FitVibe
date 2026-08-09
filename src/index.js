@@ -52,6 +52,13 @@ app.get("/favorite", (req, res) => {
   res.sendFile(path.join(projectFolder, "public", "Favorite.html"));
 });
 
+// try-your-self
+
+app.get("/try-your-self", (req, res) => {
+  console.log(req.query);
+
+  return res.sendFile(path.join(projectFolder, "public", "Code-Ai.html"));
+});
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(projectFolder, "public", "NotFound.html"));
 });

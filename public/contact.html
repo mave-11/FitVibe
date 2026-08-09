@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Fitvibe </title>
+    <!-- Normalize File -->
+    <link rel="stylesheet" href="./assets/Css/normalize.css" />
+    <!-- Css File-->
+    <link rel="stylesheet" href="./assets/Css/contact.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./assets/Css/all.min.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    
+  <!-- Start Header -->
+  <div class="header">
+    <div class="container">
+      <a href="#" class="logo"> Fitvibe </a>
+
+      <!--search box-->
+      <div class="searchbox">
+
+        <input type="text" placeholder="Search Product ...">
+        <button><i class="fas fa-search"></i></button>
+
+      </div>
+
+
+        <div class="nav">
+        <!-- JS add Class: show -->
+          <ul class="nav-links">
+          <!-- JS add Class: active -->
+          <li><a href="./">Home</a></li>
+          <li><a href="./shop">Shop</a></li>
+          <li><a href="./about">About</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+
+          <li>
+            <a href="Favorite.html">
+            <div class="heart-icon">
+              <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>             </div>
+            </a>
+          
+          </li>
+
+
+          <!-- user-icon-->
+          <div id="user-session">
+          <a href="auth/login">
+          <button class="btn">Login </button></a>
+          </div>
+
+
+        </ul>
+
+          
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <script>
+
+    async function checkSession() {
+      try {
+        const response = await fetch("/session");
+        const data = await response.json();
+  
+        if (data.user) {
+          document.getElementById("user-session").innerHTML = `
+          <div class="user-menu" id="user-menu" style="display: none;">
+              <button class="dropdown-btn" onclick="toggleDropdown()">
+                Welcome, <span id="username"></span> ▼
+              </button>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="#" onclick="logout()">Logout</a>
+              </div>
+            </div>`;
+          document.getElementById("user-menu").style.display = "inline-block";
+          document.getElementById("username").innerText = data.user.first_name;
+        }
+      } catch (error) {
+        console.error("Error fetching session data:", error);
+      }
+    }
+  
+    function toggleDropdown() {
+      document.getElementById("dropdown-content").classList.toggle("show");
+    }
+  
+    function logout() {
+      fetch("/logout", { method: "GET" }).then(() => {
+        window.location.reload();
+      });
+    }
+  
+    window.onclick = function (event) {
+      if (!event.target.matches('.dropdown-btn')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  
+    checkSession();
+  
+  
+    // async function checkSession() {
+    //   try {
+    //     const response = await fetch("/session");
+    //     const data = await response.json();
+  
+    //     if (data.user) {
+    //       console.log("User is logged in:", data.user);
+    //       document.getElementById("user-session").innerHTML = `
+    //        <div class="user-menu" id="user-menu" style="display: none;">
+    //           <button class="dropdown-btn" onclick="toggleDropdown()">
+    //               Welcome, <span id="username"></span> ▼
+    //           </button>
+    //           <div class="dropdown-content" id="dropdown-content">
+    //               <a href="#" onclick="logout()">Logout</a>
+    //           </div>
+    //       </div>
+    //       `;
+    //     }
+    //     console.log("Session data:", data);
+    //   } catch (error) {
+    //     console.error("Error fetching session data:", error);
+    //   }
+    // }
+  
+    // function logout() {
+    //   fetch("/logout", { method: "GET" }).then(() => {
+    //     window.location.reload();
+    //   });
+    // }
+  
+    // checkSession();
+  </script>
+  
+  <style>
+    .user-menu {
+      position: relative;
+      display: inline-block;
+    }
+  
+    .dropdown-btn {
+      background-color: #009688;
+      color: white;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: white;
+      min-width: 120px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      right: 0;
+      z-index: 1000;
+    }
+  
+    .dropdown-content a {
+      color: black;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+    }
+  
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+  
+    .show {
+      display: block;
+    }
+  </style>
+
+
+
+    <!-- End Header -->
+
+    <!-- Start about-header -->
+    <div class="contact-header">
+      <div class="content">
+        <h1># Contact Us</h1>
+        <h3>Up to <span>70% Off</span>-All T-Shirts & Accessories</h3>
+      </div>
+    </div>
+    <!-- End about-header -->
+
+    <!-- Start Content-us -->
+    <div class="contact-us">
+      <div class="container">
+        <div class="content">
+          <span>GET IN TOUCH</span>
+          <h3>Visit one of our agency locations or contact us today</h3>
+          <span>Head Office</span>
+
+          <ul>
+            <li>
+              <div class="icon"><i class="fa-solid fa-map-location"></i></div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </li>
+            <li>
+              <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+              <p>contact@example.com</p>
+            </li>
+            <li>
+              <div class="icon"><i class="fa-solid fa-phone"></i></div>
+              <p>contact@example.com</p>
+            </li>
+            <li>
+              <div class="icon"><i class="fa-regular fa-clock"></i></div>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="location"></div>
+      </div>
+    </div>
+    <!-- End Content-us -->
+
+    <!-- Start Massage -->
+    <div class="massage">
+      <div class="container">
+        <div class="text">
+          <span>leave a massage</span>
+          <h3>We love to hear from you</h3>
+        </div>
+
+        <form action="">
+          <input type="text" name="name" id="name" placeholder="Your Name" />
+          <input type="text" name="email" id="email" placeholder="E-Mail" />
+          <input
+            type="text"
+            name="subject"
+            id="subject"
+            placeholder="Subject"
+          />
+          <textarea
+            name="textarea"
+            id="textarea"
+            placeholder="Your Massage"
+          ></textarea>
+          <input type="submit" value="submit" />
+        </form>
+      </div>
+    </div>
+    <!-- End Massage -->
+
+    <!-- Start footer -->
+    <div class="footer">
+      <div class="container">
+        <div class="contact">
+          <a href="" class="logo"> Fitvibe </a>
+          <div class="info">
+            <h4>Contact</h4>
+            <p><span>Address:</span> Zagazig - Sharqia </p>
+            <p><span>Phone:</span> +02 1091686821 </p>
+          </div>
+          <div class="follow">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+
+        <div class="box">
+          <h4>About</h4>
+          <ul class="menu">
+            <li><a href="">About Us</a></li>
+            <li><a href="">Delivery Info</a></li>
+            <li><a href="">Privacy Policy</a></li>
+            <li><a href="">Terms & Conditions</a></li>
+            <li><a href="">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h4>My Account</h4>
+          <ul>
+            <li><a href="">Sign In</a></li>
+            <li><a href="">View cart</a></li>
+            <li><a href="">My Wishlist</a></li>
+            <li><a href="">Track My Order</a></li>
+            <li><a href="">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End footer -->
+
+    <script src="./assets/Js/all.min.js"></script>
+    <script src="./assets/Js/app.js"></script>
+  </body>
+</html>

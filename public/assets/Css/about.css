@@ -129,8 +129,9 @@ h1, h2, h3, h4 {
 }
 .header .container .logo {
   color: var(--mainColor);
-  font-size: 25px;
+  font-size: 45px;
   font-weight: bold;
+  margin-right: 15px;
 }
 .header .container .nav {
   display: flex;
@@ -166,6 +167,8 @@ h1, h2, h3, h4 {
 .header .container .nav .nav-links li a:hover {
   color: var(--mainColor);
 }
+
+
 .header .container .nav .cart {
   cursor: pointer;
   font-size: 25px;
@@ -180,6 +183,13 @@ h1, h2, h3, h4 {
   font-weight: bold;
   color: var(--mainColor);
 }
+
+
+.header .container .nav .nav-links .heart-icon {
+  font-size: 20px;
+    color: var(--mainColor);
+}
+
 
 .nav-fixed {
   position: fixed;
@@ -198,6 +208,8 @@ h1, h2, h3, h4 {
   height: 2px !important;
   width: 100% !important;
 }
+
+
 
 @media (max-width: 991px) {
   .container .nav .nav-links {
@@ -349,12 +361,12 @@ h1, h2, h3, h4 {
 }
 .footer .container .contact .logo {
   color: var(--mainColor);
-  font-size: 80px;
+  font-size: 40px;
   font-weight: bold;
 }
 .footer .container .contact .info h4 {
   margin: 10px 0;
-  font-size: 25px;
+  font-size: 40px;
   color: var(--textColor);
 }
 .footer .container .contact .info p {
@@ -413,6 +425,7 @@ h1, h2, h3, h4 {
 }
 
 
+  
 
 .searchbox {
   display: flex;
@@ -429,7 +442,7 @@ h1, h2, h3, h4 {
   outline: none;
   background: transparent;
   padding: 10px;
-  width: 350px;
+  width: 300px;
   font-size: 16px;
   border-radius: 20px;
 }
@@ -466,4 +479,48 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   color: white;
+}
+
+
+
+
+/* خاصية اظهار اسم اليوزر*/
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  background-color: #009688;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  right: 0;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.show {
+  display: block;
 }

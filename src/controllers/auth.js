@@ -35,7 +35,7 @@ const register = async (req, res) => {
 
     console.log("User registered successfully:", newUser.rows[0]);
 
-    res.redirect("auth/login");
+    res.redirect("/auth/login");
   } catch (error) {
     console.error("Error during registration:", error);
     res.status(500).json({ message: "Internal server error" });

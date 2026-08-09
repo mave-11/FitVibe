@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Greatness Store</title>
+  <title>Fitvibe Store</title>
   <link rel="shortcut icon" href="assets/images/GLOGO.png" type="image/x-icon">
   <!-- Normalize File -->
   <link rel="stylesheet" href="./assets/Css/normalize.css" />
@@ -22,9 +22,10 @@
 
 <body>
   <!-- Start Header -->
+  <!-- Start Header -->
   <div class="header">
     <div class="container">
-      <a href="./" class="logo">Greatness </a>
+      <a href="./" class="logo">Fitvibe</a>
 
       <!--search box-->
       <div class="searchbox">
@@ -42,10 +43,13 @@
           <li><a href="./">Home</a></li>
           <li><a href="./shop">Shop</a></li>
           <li><a href="./about">About</a></li>
-          <li><a href="./contact">Contact</a></li>
-          <a href="Login.html"><button class="btn">Login </button></a>
+          <li><a href="./contact.html">Contact</a></li>
+          <div id="user-session">
 
-          <li> <a href="/favorite">
+            <a href="auth/login"><button class="btn">Login </button></a>
+          </div>
+
+          <li> <a href="./favorite">
               <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
             </a></li>
 
@@ -56,20 +60,85 @@
           <span style="margin-top: 5px; margin-right: 5px;" class="span" id="cart-count">0</span>
         </div>
 
-
       </div>
-
-
-
     </div>
   </div>
 
-  <!-- End Header -->
+
+  <!--  بداية خاصية زهور مرحبا محمد -->
+  <script>
+    async function checkSession() {
+      try {
+        const response = await fetch("/session");
+        const data = await response.json();
+
+        if (data.user) {
+          document.getElementById("user-session").innerHTML = `
+          <div class="user-menu" id="user-menu" style="display: none;">
+              <button class="dropdown-btn" onclick="toggleDropdown()">
+                Welcome, <span id="username"></span> ▼
+              </button>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="#" onclick="logout()">Logout</a>
+              </div>
+            </div>`;
+          document.getElementById("user-menu").style.display = "inline-block";
+          document.getElementById("username").innerText = data.user.first_name;
+        }
+      } catch (error) {
+        console.error("Error fetching session data:", error);
+      }
+    }
+
+    function toggleDropdown() {
+      document.getElementById("dropdown-content").classList.toggle("show");
+    }
+
+    function logout() {
+      fetch("/logout", { method: "GET" }).then(() => {
+        window.location.reload();
+      });
+    }
+
+    window.onclick = function (event) {
+      if (!event.target.matches('.dropdown-btn')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    checkSession();
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Start shop-header -->
   <div class="shop-header">
     <div class="content">
-      <h1># Winter Collection 2025 </h1>
+      <h1># Summer Collection 2025 </h1>
       <h3>Up to <span>70% Off</span>-All T-Shirts & Accessories</h3>
     </div>
   </div>
@@ -78,12 +147,105 @@
   <!-- Start features-products -->
   <div class="features-products">
     <div class="container">
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f1.jpg" alt="" />
+          <img src="./assets/images/features/tshirt.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
+          <h3 class="title">Summer Printed T-Shirt </h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$350</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/tshirt555.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title">Summer Printed T-Shirt</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$500</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/offfftshirt.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title">Summer Printed T-Shirt</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$600</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/offfftshirt 222.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title">Summer Printed T-Shirt</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$350</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/tshirt88.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -101,12 +263,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f2.jpg" alt="" />
+          <img src="./assets/images/features/tshirt 123.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -124,12 +286,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f3.jpg" alt="" />
+          <img src="./assets/images/features/tshirt90.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -147,12 +309,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f4.jpg" alt="" />
+          <img src="./assets/images/features/tshirt222.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -170,12 +332,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f5.jpg" alt="" />
+          <img src="./assets/images/features/tshirt442.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -193,12 +355,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f6.jpg" alt="" />
+          <img src="./assets/images/features/tshirt444.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -216,12 +378,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f7.jpg" alt="" />
+          <img src="./assets/images/features/tshirt55.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -239,12 +401,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/f8.jpg" alt="" />
+          <img src="./assets/images/features/tshirt777.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -262,12 +424,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/n1.jpg" alt="" />
+          <img src="./assets/images/features/tshirt888.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -285,12 +447,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/n2.jpg" alt="" />
+          <img src="./assets/images/features/tshirt999.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -308,12 +470,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/n3.jpg" alt="" />
+          <img src="./assets/images/features/tshirt10.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -331,12 +493,12 @@
         </div>
       </div>
 
-      <div class="product">
+      <div class="product" onclick="goToProducrtPage(this)" style="cursor: pointer;">
         <div class="img-container">
-          <img src="./assets/images/products/n4.jpg" alt="" />
+          <img src="./assets/images/features/tshirt9900.webp" alt="" />
         </div>
         <div class="content">
-          <p class="brand">adidas</p>
+          <p class="brand">Fitvibe</p>
           <h3 class="title">Cartoon Astronaut T-Shirts</h3>
           <div class="rate">
             <i class="fa-solid fa-star"></i>
@@ -354,97 +516,8 @@
         </div>
       </div>
 
-      <div class="product">
-        <div class="img-container">
-          <img src="./assets/images/products/n5.jpg" alt="" />
-        </div>
-        <div class="content">
-          <p class="brand">adidas</p>
-          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
-          <div class="rate">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <span class="price">$78</span>
-          <div class="fav-cart">
-            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
-          </div>
-          <div class="product-cart">
-            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="product">
-        <div class="img-container">
-          <img src="./assets/images/products/n6.jpg" alt="" />
-        </div>
-        <div class="content">
-          <p class="brand">adidas</p>
-          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
-          <div class="rate">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <span class="price">$78</span>
-          <div class="fav-cart">
-            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
-          </div>
-          <div class="product-cart">
-            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
-          </div>
-        </div>
-      </div>
 
-      <div class="product">
-        <div class="img-container">
-          <img src="./assets/images/products/n7.jpg" alt="" />
-        </div>
-        <div class="content">
-          <p class="brand">adidas</p>
-          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
-          <div class="rate">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <span class="price">$78</span>
-          <div class="fav-cart">
-            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
-          </div>
-          <div class="product-cart">
-            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product">
-        <div class="img-container">
-          <img src="./assets/images/products/n8.jpg" alt="" />
-        </div>
-        <div class="content">
-          <p class="brand">adidas</p>
-          <h3 class="title">Cartoon Astronaut T-Shirts</h3>
-          <div class="rate">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-solid fa-star"></i>
-          </div>
-          <span class="price">$78</span>
-          <div class="fav-cart">
-            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
-          </div>
-          <div class="product-cart">
-            <a href="#" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <!-- End features-products -->
@@ -453,7 +526,7 @@
   <div class="footer">
     <div class="container">
       <div class="contact">
-        <a href="./index.html" class="logo">Greatness</a>
+        <a href="./index.html" class="logo">Fitvibe</a>
         <div class="info">
           <h4>Contact</h4>
           <p><span>Address:</span> Sharqia - Zagazig </p>
@@ -526,7 +599,19 @@
   </div>
 
 
+  <script>
+    function goToProducrtPage(productElement) {
+      // الحصول على رابط الصورة
+      let productImage = productElement.querySelector(".img-container img").src;
 
+      // تخزين الرابط في localStorage
+      localStorage.setItem("selectedProductImage", productImage);
+
+      // الانتقال إلى صفحة المنتج
+      window.location.href = "producrtPage.html";
+    }
+
+  </script>
 
 
 

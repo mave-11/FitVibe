@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fitvibe Store</title>
+        <link rel="shortcut icon" href="assets/images/GLOGO.png" type="image/x-icon">
+
+        <!-- Normalize File -->
+        <link rel="stylesheet" href="./assets/Css/normalize.css" />
+        <!-- Css File-->
+        <link rel="stylesheet" href="./assets/Css/about.css" />
+        <link rel="stylesheet" href="./assets/Css/proPage.css" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="./assets/Css/all.min.css" />
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet" />
+    </head>
+
+
+    
+</head>
+
+<body>
+
+    <!-- Start Header -->
+    <div class="header">
+        <div class="container">
+            <a href="#" class="logo">Fitvibe</a>
+
+            <!--search box-->
+            <div class="searchbox">
+
+                <input type="text" placeholder="Search Product ...">
+                <button><i class="fas fa-search"></i></button>
+
+            </div>
+
+
+            <div class="nav">
+                <!-- JS add Class: show -->
+                <ul class="nav-links">
+                    <!-- JS add Class: active -->
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./shop.html">Shop</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+
+                    <li>
+                        <a href="Favorite.html">
+                            <div class="heart-icon">
+                                <div class="heart-icon"><i class="fa-regular fa-heart"></i></div>
+                            </div>
+                        </a>
+
+                    </li>
+
+
+                    <!-- user-icon-->
+                    <div id="user-session">
+                        <a href="auth/login">
+                            <button class="btn">Login </button></a>
+                    </div>
+
+
+                </ul>
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <script>
+
+        async function checkSession() {
+            try {
+                const response = await fetch("/session");
+                const data = await response.json();
+
+                if (data.user) {
+                    document.getElementById("user-session").innerHTML = `
+          <div class="user-menu" id="user-menu" style="display: none;">
+              <button class="dropdown-btn" onclick="toggleDropdown()">
+                Welcome, <span id="username"></span> ▼
+              </button>
+              <div class="dropdown-content" id="dropdown-content">
+                <a href="#" onclick="logout()">Logout</a>
+              </div>
+            </div>`;
+                    document.getElementById("user-menu").style.display = "inline-block";
+                    document.getElementById("username").innerText = data.user.first_name;
+                }
+            } catch (error) {
+                console.error("Error fetching session data:", error);
+            }
+        }
+
+        function toggleDropdown() {
+            document.getElementById("dropdown-content").classList.toggle("show");
+        }
+
+        function logout() {
+            fetch("/logout", { method: "GET" }).then(() => {
+                window.location.reload();
+            });
+        }
+
+        window.onclick = function (event) {
+            if (!event.target.matches('.dropdown-btn')) {
+                const dropdowns = document.getElementsByClassName("dropdown-content");
+                for (let i = 0; i < dropdowns.length; i++) {
+                    let openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        checkSession();
+    </script>
+
+    <style>
+        .user-menu {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background-color: #009688;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 120px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
+    <!-- End Header -->
+    <br>
+    <br>
+    <br>
+    <h2 class="purchase-header">Purchase</h2>
+
+    <div class="proDetails">
+        <div class="product-container">
+            <div class="product-images">
+
+                <img id="main-image" src="" alt="Product Image" />
+                <div class="thumbnails">
+                    <img src="" alt="Product Image">
+                    <img src="" alt="Product Image">
+                    <img src="" alt="Product Image">
+                </div>
+            </div>
+
+            <div class="product-details">
+
+                <h1 id="product-name">Summer Oversized T-Shirt</h1>
+
+                <p class="price" id="product-price"> 300$</p>
+                <br>
+
+                <label for="size">Size :</label>
+                <select id="size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+
+                <label for="quantity">Quantity :</label>
+                <input type="number" id="quantity" name="quantity" min="1" max="10" value="1">
+
+
+                <div class="feature-button">
+                    <i class="fas fa-camera"></i>
+                    <form action="try-your-self" method="get">
+                        <input type="hidden" name="product_image" value="" id="product_image">
+                        <button type="submit" class="try-button">Try it Yourself</button>
+                    </form>
+                </div>
+
+
+                <button>Add to Cart</button>
+                <a href="payment.html"><button>Buy Now</button></a>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="recommend-head">
+       <h2> Products You May Like </h2>
+    </div>
+
+<div class="recommend-tshirt">
+
+
+
+ <div class="thisproduct" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/tshirt888.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title"> Basic Summer T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="shop.html" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+ </div>
+
+
+
+
+ <div class="thisproduct" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/tshirt777.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title"> Basic Summer T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="shop.html" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+ </div>
+
+
+
+
+
+
+
+ <div class="thisproduct" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/tshirt999.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title"> Basic Summer T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="shop.html" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+ </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <div class="thisproduct" onclick="goToProducrtPage(this)" style="cursor: pointer;">
+        <div class="img-container">
+          <img src="./assets/images/features/tshirt9900.webp" alt="" />
+        </div>
+        <div class="content">
+          <p class="brand">Fitvibe</p>
+          <h3 class="title"> Basic Summer T-Shirts</h3>
+          <div class="rate">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <span class="price">$78</span>
+          <div class="fav-cart">
+            <a href="Favorite.html" class="add-to-favorites"> <i class="fa-solid fa-heart"></i></a>
+          </div>
+          <div class="product-cart">
+            <a href="shop.html" class="add-to-cart"> <i class="fa-solid fa-cart-arrow-down"></i></a>
+          </div>
+        </div>
+ </div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <section class="customer-reviews">
+        <h2>Customer Reviews</h2>
+
+        <div class="review">
+            <div class="review-header">
+                <h3>John Doe</h3>
+                <div class="stars">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9734;</span>
+                </div>
+            </div>
+            <p class="review-text">
+                "This jacket is absolutely amazing! The quality is fantastic, and it fits perfectly. Highly
+                recommend!"
+            </p>
+        </div>
+
+        <div class="review">
+            <div class="review-header">
+                <h3>Jane Smith</h3>
+                <div class="stars">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9734;</span>
+                    <span>&#9734;</span>
+                </div>
+            </div>
+            <p class="review-text">
+                "Good quality but a little tight. I would suggest ordering a size up. Overall, satisfied with the
+                purchase."
+            </p>
+        </div>
+
+        <div class="review">
+            <div class="review-header">
+                <h3>Emily Brown</h3>
+                <div class="stars">
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                    <span>&#9733;</span>
+                </div>
+            </div>
+            <p class="review-text">
+                "The best purchase I’ve made this year! Super comfortable, stylish, and well-made. Love it!"
+            </p>
+        </div>
+    </section>
+
+    <!---------------------------------- Start footer -------------------------------------------------->
+
+
+
+    <div class="footer">
+        <div class="container">
+            <div class="contact">
+                <a href="" class="logo">Fitvibe </a>
+                <div class="info">
+                    <h4>Contact</h4>
+                    <p><span>Address:</span> Zagazig - Sharqia </p>
+                    <p><span>Phone:</span> +02 01091686821</p>
+                </div>
+                <div class="follow">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+
+            <div class="box">
+                <h4>About</h4>
+                <ul class="menu">
+                    <li><a href="">About Us</a></li>
+                    <li><a href="">Delivery Info</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="box">
+                <h4>My Account</h4>
+                <ul>
+                    <li><a href="">Sign In</a></li>
+                    <li><a href="">View cart</a></li>
+                    <li><a href="">My Wishlist</a></li>
+                    <li><a href="">Track My Order</a></li>
+                    <li><a href="">Help</a></li>
+                </ul>
+            </div>
+
+            <!-- End footer -->
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    const imageInput = document.getElementById("product_image");
+                    console.log(imageInput);
+                    // جلب الصورة المحفوظة
+                    let savedImage = localStorage.getItem("selectedProductImage");
+                    imageInput.value = savedImage
+                    console.log(savedImage);
+                    if (savedImage) {
+                        // تغيير الصورة الرئيسية
+                        document.getElementById("main-image").src = savedImage;
+
+                        // تغيير الصور المصغرة إذا حبيت
+                        let thumbnails = document.querySelectorAll(".thumbnails img");
+                        thumbnails.forEach(img => img.src = savedImage);
+                    }
+                });
+
+            </script>
+
+</body>
+
+</html>
